@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+__author__ = "Simon Lassourreuille"
+
 import sys, re, math
 
 """
