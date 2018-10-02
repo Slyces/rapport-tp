@@ -82,26 +82,26 @@ Le temps d'exécution explose totalement.
 
 Comparaison des politiques :
 
-agent 0:
-
-                     a0:Listen        
-                          │           
-           o0:HL ─────────┴───────── o1:HR          
-             │                          │           
-         a0:Listen                  a0:Listen       
-    o0:HL ───┴── o1:HR         o0:HL ───┴── o1:HR                   
-      │             │            │             │       
-  a0:Listen     a0:Listen    a0:Listen     a0:Listen                                       
-agent 1:
-                                                    
-                     a0:Listen                      
-                          │                         
-           o0:HL ─────────┴───────── o1:HR          
-             │                          │           
-         a0:Listen                  a0:Listen       
-    o0:HL ───┴── o1:HR         o0:HL ───┴── o1:HR   
-      │             │            │             │    
-  a0:Listen     a0:Listen    a0:Listen     a0:Listen
+agent 0:                                             
+                                                           
+                           a0:Listen                       
+                                │                          
+                 o0:HL ─────────┴───────── o1:HR           
+                   │                          │            
+               a0:Listen                  a0:Listen        
+          o0:HL ───┴── o1:HR         o0:HL ───┴── o1:HR             
+            │             │            │             │     
+        a0:Listen     a0:Listen    a0:Listen     a0:Listen                                 
+agent 1:                                             
+                                                           
+                           a0:Listen                       
+                                │                          
+                 o0:HL ─────────┴───────── o1:HR           
+                   │                          │            
+               a0:Listen                  a0:Listen        
+          o0:HL ───┴── o1:HR         o0:HL ───┴── o1:HR    
+            │             │            │             │     
+        a0:Listen     a0:Listen    a0:Listen     a0:Listen 
 
 La politique est très similaire : on continue à écouter indépendamment des informations reçues. Ca s'explique par le risque d'ouvrir la porte : les agents continuent d'observer jusqu'à avoir assez d'informations pour réduire le risque. Celà s'observera probablement sur une hauteur supérieure, avec des situations où l'agent est assez certain poru agir opposées à des situations où l'incertitude est toujours présente.
 
@@ -125,3 +125,132 @@ Policy for agent 1 (index 55):
 (o11:HearRight,o10:HearLeft) --> a10:Listen
 (o11:HearRight,o11:HearRight) --> a11:OpenLeft
 """
+
+
+agent 0:                                             
+                                                           
+                           a0:Listen                       
+                                │                          
+                 o0:HL ─────────┴───────── o1:HR           
+                   │                          │            
+               a0:Listen                  a0:Listen        
+          o0:HL ───┴── o1:HR         o0:HL ───┴── o1:HR             
+            │             │            │             │     
+      a0:OpenRight    a0:Listen    a0:Listen    a0:OpenLeft
+
+agent 1:                                             
+                                                           
+                           a0:Listen                       
+                                │                          
+                 o0:HL ─────────┴───────── o1:HR           
+                   │                          │            
+               a0:Listen                  a0:Listen        
+          o0:HL ───┴── o1:HR         o0:HL ───┴── o1:HR             
+            │             │            │             │     
+      a0:OpenRight    a0:Listen    a0:Listen    a0:OpenLeft
+
+Dans cette politique, on prend une décision dans la situation où l'on entend deux fois de suite le tigre au même endroit. Cette politique n'est pas la politique optimale, on peut donc supposer que l'algorithme approché n'a pas rencontré la politique optimale dans son exploration des possibilités.
+
+On peut prédire assez facilement le moment où agir devient plus intéressant que "Listen":
+
+listen-listen : -2
+ouvrir la bonne porte : 9 ou 20 ou -100 (en fonction de la coordination)
+
+On attend donc que les observations nous donnent une proba suffisante pour agir.
+
+q. testez la résolution à horizon 5 avec la méthode exacte exhaustive et avec GMAA. Que constatez-vous ?
+
+Méthode exhaustive :
+Jpol # 5000 of 5069619362125685561 - 9.863e-14%
+Jpol # 6000 of 5069619362125685561 - 1.184e-13%
+
+Dès les premiers secondes, on se rend compte que la progression est extrêmement lente et l'on ne pourra pas explorer l'arbre des possibles dans un temps raisonnable.
+
+Méthode approchée :
+
+"""
+❯ ./GMAA -G FSPC -B AM -v -h5 DT -v
+Policy for agent 0 (index 15533624506455):
+() --> a00:Listen
+(o00:HearLeft) --> a00:Listen
+(o01:HearRight) --> a00:Listen
+(o00:HearLeft,o00:HearLeft) --> a02:OpenRight
+(o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight) --> a01:OpenLeft
+(o00:HearLeft,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o01:HearRight,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o01:HearRight,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o01:HearRight,o01:HearRight) --> a00:Listen
+(o01:HearRight,o01:HearRight,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o01:HearRight,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight,o01:HearRight,o01:HearRight) --> a00:Listen
+Policy for agent 1 (index 15533624506455):
+() --> a10:Listen
+(o10:HearLeft) --> a10:Listen
+(o11:HearRight) --> a10:Listen
+(o10:HearLeft,o10:HearLeft) --> a12:OpenRight
+(o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight) --> a11:OpenLeft
+(o10:HearLeft,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o11:HearRight,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o11:HearRight,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o11:HearRight,o11:HearRight) --> a10:Listen
+(o11:HearRight,o11:HearRight,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o11:HearRight,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight,o11:HearRight,o11:HearRight) --> a10:Listen
+"""
+
+C'est la même politique qu'à l'horizon 3, sauf qu'on listen dans tous les cas suivants.
+
+On l'obtient en 1.909 secondes, c'est à dire 10 fois plus vite qu'un horizon 3 exact.
+
+T. Patrouille multiagent - totalement observable
+
+q. testez la résolution du problème de rencontre sur une grille (Small Grid) à l'horizon 3. Quelle stratégie est obtenue ?
+
+test à l'horizon 3 :
+
+"""
+action policy : [16,25]((2.19116,1.64818,2.19116,1.64818,2.40835,1.64818,1.85931,1.64818,1.40675,1.65424,2.19116,1.64818,2.19116,1.64818,2.40835,1.64818,1.40675,1.64818,1.85931,1.65424,2.40835,1.65424,2.40835,1.65424,2.71),(1.39476,1.21365,1.93775,1.39476,1.32239,1.21365,1.18354,1.45508,1.21365,1.17139,1.39476,1.21365,1.93775,1.39476,1.32239,1.93775,1.45508,1.72661,1.93775,2.07651,1.32239,1.17139,2.07651,1.32239,1.20177),(1.93775,1.39476,1.39476,1.21365,1.32239,1.72661,1.93775,1.93775,1.45508,2.07651,1.93775,1.39476,1.39476,1.21365,1.32239,1.45508,1.21365,1.21365,1.18354,1.17139,2.07651,1.32239,1.32239,1.17139,1.20177),(1.21372,1.03261,1.21372,1.03261,0.96016,1.24383,1.21372,1.69639,1.21372,1.11117,1.21372,1.03261,1.21372,1.03261,0.96016,1.69639,1.21372,1.24383,1.21372,1.11117,1.11117,0.96016,1.11117,0.96016,0.899757),(1.39476,1.21365,1.39476,1.93775,1.32239,1.21365,1.18354,1.21365,1.45508,1.17139,1.93775,1.45508,1.93775,1.72661,2.07651,1.39476,1.21365,1.39476,1.93775,1.32239,1.32239,1.17139,1.32239,2.07651,1.20177),(2.19116,1.64818,1.64818,2.19116,2.40835,1.64818,1.85931,1.40675,1.64818,1.65424,1.64818,1.40675,1.85931,1.64818,1.65424,2.19116,1.64818,1.64818,2.19116,2.40835,2.40835,1.65424,1.65424,2.40835,2.71),(1.21372,1.03261,1.03261,1.21372,0.96016,1.24383,1.21372,1.21372,1.69639,1.11117,1.69639,1.21372,1.21372,1.24383,1.11117,1.21372,1.03261,1.03261,1.21372,0.96016,1.11117,0.96016,0.96016,1.11117,0.899757),(1.93775,1.39476,1.21365,1.39476,1.32239,1.72661,1.93775,1.45508,1.93775,2.07651,1.45508,1.21365,1.18354,1.21365,1.17139,1.93775,1.39476,1.21365,1.39476,1.32239,2.07651,1.32239,1.17139,1.32239,1.20177),(1.93775,1.72661,1.93775,1.45508,2.07651,1.39476,1.93775,1.39476,1.21365,1.32239,1.39476,1.93775,1.39476,1.21365,1.32239,1.21365,1.45508,1.21365,1.18354,1.17139,1.32239,2.07651,1.32239,1.17139,1.20177),(1.21372,1.24383,1.69639,1.21372,1.11117,1.03261,1.21372,1.21372,1.03261,0.96016,1.03261,1.21372,1.21372,1.03261,0.96016,1.21372,1.69639,1.24383,1.21372,1.11117,0.96016,1.11117,1.11117,0.96016,0.899757),(1.85931,1.64818,1.64818,1.40675,1.65424,1.64818,2.19116,2.19116,1.64818,2.40835,1.64818,2.19116,2.19116,1.64818,2.40835,1.40675,1.64818,1.64818,1.85931,1.65424,1.65424,2.40835,2.40835,1.65424,2.71),(1.18354,1.21365,1.45508,1.21365,1.17139,1.21365,1.39476,1.93775,1.39476,1.32239,1.21365,1.39476,1.93775,1.39476,1.32239,1.45508,1.93775,1.72661,1.93775,2.07651,1.17139,1.32239,2.07651,1.32239,1.20177),(1.21372,1.24383,1.21372,1.69639,1.11117,1.03261,1.21372,1.03261,1.21372,0.96016,1.21372,1.69639,1.21372,1.24383,1.11117,1.03261,1.21372,1.03261,1.21372,0.96016,0.96016,1.11117,0.96016,1.11117,0.899757),(1.93775,1.72661,1.45508,1.93775,2.07651,1.39476,1.93775,1.21365,1.39476,1.32239,1.21365,1.45508,1.18354,1.21365,1.17139,1.39476,1.93775,1.21365,1.39476,1.32239,1.32239,2.07651,1.17139,1.32239,1.20177),(1.18354,1.21365,1.21365,1.45508,1.17139,1.21365,1.39476,1.39476,1.93775,1.32239,1.45508,1.93775,1.93775,1.72661,2.07651,1.21365,1.39476,1.39476,1.93775,1.32239,1.17139,1.32239,1.32239,2.07651,1.20177),(1.85931,1.64818,1.40675,1.64818,1.65424,1.64818,2.19116,1.64818,2.19116,2.40835,1.40675,1.64818,1.85931,1.64818,1.65424,1.64818,2.19116,1.64818,2.19116,2.40835,1.65424,2.40835,1.65424,2.40835,2.71))Simulating policy with nrRuns: 1000 and seed: 42
+Avg rewards: < 1.68966 >
+"""
+
+Stratégie obtenue --> analyser la matrice et trouver pour chaque état l'action qui est préconisée.
+
+On a un Avg rewards de 1.7 environ contre 8.9 avec l'horizon infini.
