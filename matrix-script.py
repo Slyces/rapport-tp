@@ -55,6 +55,12 @@ actions_list = [' ' * 5] + ["(" + actions[i] + " " + actions[j] + ")" for i in r
 print(' '.join(actions_list))
 print('\n'.join([states[i] + ' '.join(['{:5.3}'.format(x) for x in line]) for i, line in enumerate(matrix)]))
 print()
+# # Print latex
+# latex_states = [''.join([x if x != '_' else '\\_' for x in s]) for s in states]
+# print(' ' + ' & '.join(actions_list) + '\\\\')
+# print('\n'.join([latex_states[i] + ' & ' + ' & '.join(['{:5.3}'.format(x) for x in line]) + "\\\\" for i, line in enumerate(matrix)]))
+
+# print()
 
 # ---------------------------------------------------------------------------- #
 # On récupère les différents max
