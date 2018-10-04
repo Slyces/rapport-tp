@@ -1,0 +1,931 @@
+Tp cocoma
+
+3.1
+
+BruteForceSearchPlanner initialized
+
+value=8
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 0
+Policy for agent 0 (index 0):
+Oempty,  --> a00:Listen
+Oempty, o00:HearLeft,  --> a00:Listen
+Oempty, o01:HearRight,  --> a00:Listen
+Policy for agent 1 (index 0):
+Oempty,  --> a10:Listen
+Oempty, o10:HearLeft,  --> a10:Listen
+Oempty, o11:HearRight,  --> a10:Listen
+
+real	0m0.027s
+user	0m0.008s
+sys	0m0.004s
+
+l'ordinateur va chercher en brute force toutes les possibilités d'actions des agents en fonction de leurs observations. La politique est très simpliste, quoi qu'ils entendent, les agents vont écouter une deuxieme fois ensuite. les deux agents ont le même comportement. Les agents ne communiquent pas, l'action du premier n'aura pas d'affect sur l'etat du deuxieme.
+Time = 0,027sec
+
+3.2
+
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 0
+Policy for agent 0 (index 0):
+Oempty,  --> a00:Listen
+Oempty, o00:HearLeft,  --> a00:Listen
+Oempty, o01:HearRight,  --> a00:Listen
+Oempty, o00:HearLeft, o00:HearLeft,  --> a00:Listen
+Oempty, o00:HearLeft, o01:HearRight,  --> a00:Listen
+Oempty, o01:HearRight, o00:HearLeft,  --> a00:Listen
+Oempty, o01:HearRight, o01:HearRight,  --> a00:Listen
+Policy for agent 1 (index 0):
+Oempty,  --> a10:Listen
+Oempty, o10:HearLeft,  --> a10:Listen
+Oempty, o11:HearRight,  --> a10:Listen
+Oempty, o10:HearLeft, o10:HearLeft,  --> a10:Listen
+Oempty, o10:HearLeft, o11:HearRight,  --> a10:Listen
+Oempty, o11:HearRight, o10:HearLeft,  --> a10:Listen
+Oempty, o11:HearRight, o11:HearRight,  --> a10:Listen
+
+real	0m19.586s
+user	0m19.536s
+sys	0m0.004s
+
+ici on voit que le temps d'éxécution est bien plus long que pour horizon 2, le processus va prendre près de 20sec pour calculer les choix des agents. nous avons donc 7 actions pour chaques agents.
+
+
+3.3
+
+
+
+FSPC (JAIR 2008) using a BGIP-AM solver and a INVALIDQHEUR heuristic
+Instantiating the problem...
+ArgumentUtils: Problem DecTiger instantiated.
+...done.
+Instantiating the planning unit...
+BGIP_SolverCreatorInterface instance: BGIP_SolverCreator_AM object with , _m_verbose=2, _m_nrSolutions=1, _m_nrRestarts=10
+GMAA Planner initialized
+Instantiated QMDP heuristic.
+ERROR: mkdir error for /users/Etu4/3875714/.madp/results/GMAA/DecTiger
+Results will not be stored to disk.
+Computing the Q heuristic (INVALIDQHEUR)...
+INVALIDQHEUR heuristic computed
+
+===================== GMAA run 1/1 starting
+
+---------------------------------------------------
+-->>Start of new GMAA iteration, polpool size=1<<--
+BGIP_SolverCreator_AM:: creating a new BGIP_SolverAlternatingMaximization with nrRestarts=10, verbose=2, nrSols=1
+GMAA ts 0 nrJT 1 CBG bounds [ -1.79769e+308 , 1.79769e+308 ] GMAA lb -1.79769e+308 pastR 0
+BGIP_SolverAlternatingMaximization::Solve() started
+AM: new restart
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: new restart
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=38
+AM: computing new best response...v=38
+AM: computing new best response...v=38
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computed policy not added to BGIPSolution, probably a duplicate
+--GMAA::Plan::iteration ending, polpool size=1, no complete policy found yet
+---------------------------------------------------
+-->>Start of new GMAA iteration, polpool size=1<<--
+BGIP_SolverCreator_AM:: creating a new BGIP_SolverAlternatingMaximization with nrRestarts=10, verbose=2, nrSols=1
+GMAA ts 1 nrJT 4 CBG bounds [ -1.79769e+308 , 1.79769e+308 ] GMAA lb -1.79769e+308 pastR -2
+BGIP_SolverAlternatingMaximization::Solve() started
+AM: new restart
+AM: computing new best response...v=5
+AM: computing new best response...v=5
+AM: computing new best response...v=5
+AM: new restart
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-3.5
+AM: computing new best response...v=5
+AM: computing new best response...v=5
+AM: computing new best response...v=5
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=5
+AM: computing new best response...v=5
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-3.5
+AM: computing new best response...v=5
+AM: computing new best response...v=5
+AM: computing new best response...v=5
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=12.5
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=12.5
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-3.5
+AM: computing new best response...v=5
+AM: computing new best response...v=5
+AM: computing new best response...v=5
+AM: computed policy not added to BGIPSolution, probably a duplicate
+--GMAA::Plan::iteration ending, polpool size=1, no complete policy found yet
+---------------------------------------------------
+-->>Start of new GMAA iteration, polpool size=1<<--
+BGIP_SolverCreator_AM:: creating a new BGIP_SolverAlternatingMaximization with nrRestarts=10, verbose=2, nrSols=1
+GMAA ts 2 nrJT 16 CBG bounds [ -1.79769e+308 , 20 ] GMAA lb -1.79769e+308 pastR -4
+BGIP_SolverAlternatingMaximization::Solve() started
+AM: new restart
+AM: computing new best response...v=-58.4114
+AM: computing new best response...v=-58.4114
+AM: computing new best response...v=-58.4114
+AM: new restart
+AM: computing new best response...v=0.585625
+AM: computing new best response...v=9.19081
+AM: computing new best response...v=9.19081
+AM: computing new best response...v=9.19081
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-30.385
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-23.5
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=3.72
+AM: computing new best response...v=9.19081
+AM: computing new best response...v=9.19081
+AM: computing new best response...v=9.19081
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-29.79
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=3.32103
+AM: computing new best response...v=9.19081
+AM: computing new best response...v=9.19081
+AM: computing new best response...v=9.19081
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-30.385
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-5.28416
+AM: computing new best response...v=9.19081
+AM: computing new best response...v=9.19081
+AM: computing new best response...v=9.19081
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-41.2225
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computed policy not added to BGIPSolution, probably a duplicate
+new bestJPol (and max. lowerbound) found! - value v=5.19081 - PartialJPPV, past R=5.19081, 120340
+--GMAA::Plan::iteration ending, polpool size=0, best policy found so far:
+PartialJPPV, past R=5.19081, 120340
+
+----GMAA::Plan ending, best policy found:----
+PartialJPPV, past R=5.19081, 120340 = 
+
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 120340
+Policy for agent 0 (index 55):
+() --> a00:Listen
+(o00:HearLeft) --> a00:Listen
+(o01:HearRight) --> a00:Listen
+(o00:HearLeft,o00:HearLeft) --> a02:OpenRight
+(o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight) --> a01:OpenLeft
+Policy for agent 1 (index 55):
+() --> a10:Listen
+(o10:HearLeft) --> a10:Listen
+(o11:HearRight) --> a10:Listen
+(o10:HearLeft,o10:HearLeft) --> a12:OpenRight
+(o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight) --> a11:OpenLeft
+
+
+ GMAA::Plan GMAA ENDED
+
+
+ Expanded nodes at different stages:
+< 1, 1, 1 >
+Maximum number of nodes that could have been expanded:
+< 9, 81, 6561 >
+
+value=5.19081
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 120340
+Policy for agent 0 (index 55):
+() --> a00:Listen
+(o00:HearLeft) --> a00:Listen
+(o01:HearRight) --> a00:Listen
+(o00:HearLeft,o00:HearLeft) --> a02:OpenRight
+(o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight) --> a01:OpenLeft
+Policy for agent 1 (index 55):
+() --> a10:Listen
+(o10:HearLeft) --> a10:Listen
+(o11:HearRight) --> a10:Listen
+(o10:HearLeft,o10:HearLeft) --> a12:OpenRight
+(o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight) --> a11:OpenLeft
+OptimalValueDatabase: entry 'DecTiger 1 3'
+OptimalValueDatabase: Optimal value unknown.
+Running Simulation to determine control quality...
+Sampled value = 5.0224 (computed was 5.19081)
+===================== GMAA run 1/1 ended, Dec-POMDP value=5.19081
+
+Summary of timing results:
+ComputeQ: 0 s in 1 measurements, max 0, avg 0, min 0
+Overall: 0.07 s in 1 measurements, max 0.07, avg 0.07, min 0.07
+Plan: 0 s in 1 measurements, max 0, avg 0, min 0
+PlanningUnit: 0 s in 1 measurements, max 0, avg 0, min 0
+Simulation: 0.07 s in 1 measurements, max 0.07, avg 0.07, min 0.07
+GMAA::Plan: 0 s in 1 measurements, max 0, avg 0, min 0
+GMAA::Plan::iteration: 0 s in 3 measurements, max 0, avg 0, min 0
+GMAA::kGMAA_ts0: 0 s in 1 measurements, max 0, avg 0, min 0
+GMAA::kGMAA_ts1: 0 s in 1 measurements, max 0, avg 0, min 0
+GMAA::kGMAA_ts2: 0 s in 1 measurements, max 0, avg 0, min 0
+evaluateRandomPolicy sampled value: -140.81
+
+real	0m0.088s
+user	0m0.076s
+sys	0m0.000s
+
+
+3.4 
+
+
+Methode exacte 
+
+
+ArgumentUtils: Problem DecTiger instantiated.
+BruteForceSearchPlanner initialized
+Jpol # 2000 of 5069619362125685561 - 3.945e-14%
+Jpol # 3000 of 5069619362125685561 - 5.918e-14%
+Jpol # 4000 of 5069619362125685561 - 7.89e-14%
+Jpol # 5000 of 5069619362125685561 - 9.863e-14%
+Jpol # 6000 of 5069619362125685561 - 1.184e-13%
+Jpol # 7000 of 5069619362125685561 - 1.381e-13%
+Jpol # 8000 of 5069619362125685561 - 1.578e-13%
+Jpol # 9000 of 5069619362125685561 - 1.775e-13%
+Jpol # 10000 of 5069619362125685561 - 1.973e-13%
+.
+.
+.
+.
+
+beaucoup trop long, a ne pas faire tourner.
+
+
+methode GMAA
+FSPC (JAIR 2008) using a BGIP-AM solver and a INVALIDQHEUR heuristic
+Instantiating the problem...
+ArgumentUtils: Problem DecTiger instantiated.
+...done.
+Instantiating the planning unit...
+BGIP_SolverCreatorInterface instance: BGIP_SolverCreator_AM object with , _m_verbose=2, _m_nrSolutions=1, _m_nrRestarts=10
+GMAA Planner initialized
+Instantiated QMDP heuristic.
+ERROR: mkdir error for /users/Etu4/3875714/.madp/results/GMAA/DecTiger
+Results will not be stored to disk.
+Computing the Q heuristic (INVALIDQHEUR)...
+INVALIDQHEUR heuristic computed
+
+===================== GMAA run 1/1 starting
+
+---------------------------------------------------
+-->>Start of new GMAA iteration, polpool size=1<<--
+BGIP_SolverCreator_AM:: creating a new BGIP_SolverAlternatingMaximization with nrRestarts=10, verbose=2, nrSols=1
+GMAA ts 0 nrJT 1 CBG bounds [ -1.79769e+308 , 1.79769e+308 ] GMAA lb -1.79769e+308 pastR 0
+BGIP_SolverAlternatingMaximization::Solve() started
+AM: new restart
+AM: computing new best response...v=65
+AM: computing new best response...v=65
+AM: computing new best response...v=65
+AM: new restart
+AM: computing new best response...v=78
+AM: computing new best response...v=78
+AM: computing new best response...v=78
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=78
+AM: computing new best response...v=78
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=65
+AM: computing new best response...v=65
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=65
+AM: computing new best response...v=65
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=78
+AM: computing new best response...v=78
+AM: computing new best response...v=78
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=65
+AM: computing new best response...v=65
+AM: computing new best response...v=65
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=65
+AM: computing new best response...v=65
+AM: computing new best response...v=65
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=78
+AM: computing new best response...v=78
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=65
+AM: computing new best response...v=65
+AM: computing new best response...v=65
+AM: computed policy not added to BGIPSolution, probably a duplicate
+--GMAA::Plan::iteration ending, polpool size=1, no complete policy found yet
+---------------------------------------------------
+-->>Start of new GMAA iteration, polpool size=1<<--
+BGIP_SolverCreator_AM:: creating a new BGIP_SolverAlternatingMaximization with nrRestarts=10, verbose=2, nrSols=1
+GMAA ts 1 nrJT 4 CBG bounds [ -1.79769e+308 , 1.79769e+308 ] GMAA lb -1.79769e+308 pastR -2
+BGIP_SolverAlternatingMaximization::Solve() started
+AM: new restart
+AM: computing new best response...v=36.5
+AM: computing new best response...v=45
+AM: computing new best response...v=45
+AM: computing new best response...v=45
+AM: new restart
+AM: computing new best response...v=58
+AM: computing new best response...v=58
+AM: computing new best response...v=58
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=58
+AM: computing new best response...v=58
+AM: computing new best response...v=58
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=55.25
+AM: computing new best response...v=58
+AM: computing new best response...v=58
+AM: computing new best response...v=58
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=45
+AM: computing new best response...v=45
+AM: computing new best response...v=45
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=58
+AM: computing new best response...v=58
+AM: computing new best response...v=58
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=45
+AM: computing new best response...v=45
+AM: computing new best response...v=45
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=45
+AM: computing new best response...v=45
+AM: computing new best response...v=45
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=58
+AM: computing new best response...v=58
+AM: computing new best response...v=58
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=45
+AM: computing new best response...v=45
+AM: computing new best response...v=45
+AM: computed policy not added to BGIPSolution, probably a duplicate
+--GMAA::Plan::iteration ending, polpool size=1, no complete policy found yet
+---------------------------------------------------
+-->>Start of new GMAA iteration, polpool size=1<<--
+BGIP_SolverCreator_AM:: creating a new BGIP_SolverAlternatingMaximization with nrRestarts=10, verbose=2, nrSols=1
+GMAA ts 2 nrJT 16 CBG bounds [ -1.79769e+308 , 1.79769e+308 ] GMAA lb -1.79769e+308 pastR -4
+BGIP_SolverAlternatingMaximization::Solve() started
+AM: new restart
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: new restart
+AM: computing new best response...v=-21.175
+AM: computing new best response...v=-21.175
+AM: computing new best response...v=-21.175
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=37.4512
+AM: computing new best response...v=49.1908
+AM: computing new best response...v=49.1908
+AM: computing new best response...v=49.1908
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=31.9804
+AM: computing new best response...v=49.1908
+AM: computing new best response...v=49.1908
+AM: computing new best response...v=49.1908
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-21.6738
+AM: computing new best response...v=-18.4114
+AM: computing new best response...v=-18.4114
+AM: computing new best response...v=-18.4114
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=40.5856
+AM: computing new best response...v=49.1908
+AM: computing new best response...v=49.1908
+AM: computing new best response...v=49.1908
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=16.5
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computing new best response...v=25
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-21.175
+AM: computing new best response...v=-21.175
+AM: computing new best response...v=-21.175
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=34.7158
+AM: computing new best response...v=49.1908
+AM: computing new best response...v=49.1908
+AM: computing new best response...v=49.1908
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=37.8502
+AM: computing new best response...v=49.1908
+AM: computing new best response...v=49.1908
+AM: computing new best response...v=49.1908
+AM: computed policy not added to BGIPSolution, probably a duplicate
+--GMAA::Plan::iteration ending, polpool size=1, no complete policy found yet
+---------------------------------------------------
+-->>Start of new GMAA iteration, polpool size=1<<--
+BGIP_SolverCreator_AM:: creating a new BGIP_SolverAlternatingMaximization with nrRestarts=10, verbose=2, nrSols=1
+GMAA ts 3 nrJT 64 CBG bounds [ -1.79769e+308 , 1.79769e+308 ] GMAA lb -1.79769e+308 pastR 5.19081
+BGIP_SolverAlternatingMaximization::Solve() started
+AM: new restart
+AM: computing new best response...v=-6.74551
+AM: computing new best response...v=1.56392
+AM: computing new best response...v=1.73836
+AM: computing new best response...v=1.73836
+AM: computing new best response...v=1.73836
+AM: new restart
+AM: computing new best response...v=-15.6259
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-15.6259
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-10.9433
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-9.32467
+AM: computing new best response...v=1.56392
+AM: computing new best response...v=1.73836
+AM: computing new best response...v=1.73836
+AM: computing new best response...v=1.73836
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-11.595
+AM: computing new best response...v=4.81422
+AM: computing new best response...v=4.81422
+AM: computing new best response...v=4.81422
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-6.17913
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-17.8866
+AM: computing new best response...v=4.01798
+AM: computing new best response...v=4.81422
+AM: computing new best response...v=4.81422
+AM: computing new best response...v=4.81422
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-6.17913
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-14.3741
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computing new best response...v=18
+AM: computed policy not added to BGIPSolution, probably a duplicate
+--GMAA::Plan::iteration ending, polpool size=1, no complete policy found yet
+---------------------------------------------------
+-->>Start of new GMAA iteration, polpool size=1<<--
+BGIP_SolverCreator_AM:: creating a new BGIP_SolverAlternatingMaximization with nrRestarts=10, verbose=2, nrSols=1
+GMAA ts 4 nrJT 256 CBG bounds [ -1.79769e+308 , 20 ] GMAA lb -1.79769e+308 pastR 3.19081
+BGIP_SolverAlternatingMaximization::Solve() started
+AM: new restart
+AM: computing new best response...v=-24.9735
+AM: computing new best response...v=-3.70426
+AM: computing new best response...v=-2.07524
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: new restart
+AM: computing new best response...v=-33.4751
+AM: computing new best response...v=-15.9707
+AM: computing new best response...v=-15.0225
+AM: computing new best response...v=-14.3413
+AM: computing new best response...v=-14.3413
+AM: computing new best response...v=-14.3413
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-25.2936
+AM: computing new best response...v=-4.12399
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-38.1479
+AM: computing new best response...v=-18.3433
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computing new best response...v=-15
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-19.3722
+AM: computing new best response...v=-3.09225
+AM: computing new best response...v=-2.07524
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-15.1173
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-35.9864
+AM: computing new best response...v=-4.75
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-51.0305
+AM: computing new best response...v=-28.1726
+AM: computing new best response...v=-27.8265
+AM: computing new best response...v=-27.8265
+AM: computing new best response...v=-27.8265
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-27.6121
+AM: computing new best response...v=-4.12399
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computed policy not added to BGIPSolution, probably a duplicate
+AM: new restart
+AM: computing new best response...v=-35.3624
+AM: computing new best response...v=-4.19924
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computing new best response...v=-2
+AM: computed policy not added to BGIPSolution, probably a duplicate
+new bestJPol (and max. lowerbound) found! - value v=1.19081 - PartialJPPV, past R=1.19081, 5576341887777813748
+--GMAA::Plan::iteration ending, polpool size=0, best policy found so far:
+PartialJPPV, past R=1.19081, 5576341887777813748
+
+----GMAA::Plan ending, best policy found:----
+PartialJPPV, past R=1.19081, 5576341887777813748 = 
+
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 5576341887777813748
+Policy for agent 0 (index 15533624506455):
+() --> a00:Listen
+(o00:HearLeft) --> a00:Listen
+(o01:HearRight) --> a00:Listen
+(o00:HearLeft,o00:HearLeft) --> a02:OpenRight
+(o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight) --> a01:OpenLeft
+(o00:HearLeft,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o01:HearRight,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o01:HearRight,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o01:HearRight,o01:HearRight) --> a00:Listen
+(o01:HearRight,o01:HearRight,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o01:HearRight,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight,o01:HearRight,o01:HearRight) --> a00:Listen
+Policy for agent 1 (index 15533624506455):
+() --> a10:Listen
+(o10:HearLeft) --> a10:Listen
+(o11:HearRight) --> a10:Listen
+(o10:HearLeft,o10:HearLeft) --> a12:OpenRight
+(o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight) --> a11:OpenLeft
+(o10:HearLeft,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o11:HearRight,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o11:HearRight,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o11:HearRight,o11:HearRight) --> a10:Listen
+(o11:HearRight,o11:HearRight,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o11:HearRight,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight,o11:HearRight,o11:HearRight) --> a10:Listen
+
+
+ GMAA::Plan GMAA ENDED
+
+
+ Expanded nodes at different stages:
+< 1, 1, 1, 1, 1 >
+Maximum number of nodes that could have been expanded:
+< 9, 81, 6561, 43046721, 1853020188851841 >
+
+value=1.19081
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 5576341887777813748
+Policy for agent 0 (index 15533624506455):
+() --> a00:Listen
+(o00:HearLeft) --> a00:Listen
+(o01:HearRight) --> a00:Listen
+(o00:HearLeft,o00:HearLeft) --> a02:OpenRight
+(o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight) --> a01:OpenLeft
+(o00:HearLeft,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o00:HearLeft,o01:HearRight,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o00:HearLeft,o01:HearRight,o01:HearRight,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o00:HearLeft,o01:HearRight,o01:HearRight) --> a00:Listen
+(o01:HearRight,o01:HearRight,o00:HearLeft,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight,o00:HearLeft,o01:HearRight) --> a00:Listen
+(o01:HearRight,o01:HearRight,o01:HearRight,o00:HearLeft) --> a00:Listen
+(o01:HearRight,o01:HearRight,o01:HearRight,o01:HearRight) --> a00:Listen
+Policy for agent 1 (index 15533624506455):
+() --> a10:Listen
+(o10:HearLeft) --> a10:Listen
+(o11:HearRight) --> a10:Listen
+(o10:HearLeft,o10:HearLeft) --> a12:OpenRight
+(o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight) --> a11:OpenLeft
+(o10:HearLeft,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o10:HearLeft,o11:HearRight,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o10:HearLeft,o11:HearRight,o11:HearRight,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o10:HearLeft,o11:HearRight,o11:HearRight) --> a10:Listen
+(o11:HearRight,o11:HearRight,o10:HearLeft,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight,o10:HearLeft,o11:HearRight) --> a10:Listen
+(o11:HearRight,o11:HearRight,o11:HearRight,o10:HearLeft) --> a10:Listen
+(o11:HearRight,o11:HearRight,o11:HearRight,o11:HearRight) --> a10:Listen
+OptimalValueDatabase: entry 'DecTiger 1 5'
+OptimalValueDatabase: Optimal value unknown.
+Running Simulation to determine control quality...
+Sampled value = 1.6863 (computed was 1.19081)
+===================== GMAA run 1/1 ended, Dec-POMDP value=1.19081
+
+Summary of timing results:
+ComputeQ: 0 s in 1 measurements, max 0, avg 0, min 0
+Overall: 0.1 s in 1 measurements, max 0.1, avg 0.1, min 0.1
+Plan: 0.01 s in 1 measurements, max 0.01, avg 0.01, min 0.01
+PlanningUnit: 0 s in 1 measurements, max 0, avg 0, min 0
+Simulation: 0.09 s in 1 measurements, max 0.09, avg 0.09, min 0.09
+GMAA::Plan: 0.01 s in 1 measurements, max 0.01, avg 0.01, min 0.01
+GMAA::Plan::iteration: 0.01 s in 5 measurements, max 0.01, avg 0.002, min 0
+GMAA::kGMAA_ts0: 0 s in 1 measurements, max 0, avg 0, min 0
+GMAA::kGMAA_ts1: 0 s in 1 measurements, max 0, avg 0, min 0
+GMAA::kGMAA_ts2: 0 s in 1 measurements, max 0, avg 0, min 0
+GMAA::kGMAA_ts3: 0.01 s in 1 measurements, max 0.01, avg 0.01, min 0.01
+GMAA::kGMAA_ts4: 0 s in 1 measurements, max 0, avg 0, min 0
+evaluateRandomPolicy sampled value: -226.561
+
+real	0m1.883s
+user	0m1.732s
+sys	0m0.136s
+
+
+4.1
+
+
+3875714@ppti-24-301-09:/usr/local/madp-0.4.1/src/solvers$ ./MMDP_Solver ../../problems/GridSmall.dpomdp -h3 --discount=0.9
+Instantiating the problem...
+...done.
+Running value iteration...
+MMDP_Solver: could not open /users/Etu4/3875714/.madp/results/MMDP_Solver_VI/GridSmall/MMDP_Solver_VI_GridSmall_g0.9__h3
+Results will not be stored to disk.
+...done.
+action policy : [16,25]((2.19116,1.64818,2.19116,1.64818,2.40835,1.64818,1.85931,1.64818,1.40675,1.65424,2.19116,1.64818,2.19116,1.64818,2.40835,1.64818,1.40675,1.64818,1.85931,1.65424,2.40835,1.65424,2.40835,1.65424,2.71),(1.39476,1.21365,1.93775,1.39476,1.32239,1.21365,1.18354,1.45508,1.21365,1.17139,1.39476,1.21365,1.93775,1.39476,1.32239,1.93775,1.45508,1.72661,1.93775,2.07651,1.32239,1.17139,2.07651,1.32239,1.20177),(1.93775,1.39476,1.39476,1.21365,1.32239,1.72661,1.93775,1.93775,1.45508,2.07651,1.93775,1.39476,1.39476,1.21365,1.32239,1.45508,1.21365,1.21365,1.18354,1.17139,2.07651,1.32239,1.32239,1.17139,1.20177),(1.21372,1.03261,1.21372,1.03261,0.96016,1.24383,1.21372,1.69639,1.21372,1.11117,1.21372,1.03261,1.21372,1.03261,0.96016,1.69639,1.21372,1.24383,1.21372,1.11117,1.11117,0.96016,1.11117,0.96016,0.899757),(1.39476,1.21365,1.39476,1.93775,1.32239,1.21365,1.18354,1.21365,1.45508,1.17139,1.93775,1.45508,1.93775,1.72661,2.07651,1.39476,1.21365,1.39476,1.93775,1.32239,1.32239,1.17139,1.32239,2.07651,1.20177),(2.19116,1.64818,1.64818,2.19116,2.40835,1.64818,1.85931,1.40675,1.64818,1.65424,1.64818,1.40675,1.85931,1.64818,1.65424,2.19116,1.64818,1.64818,2.19116,2.40835,2.40835,1.65424,1.65424,2.40835,2.71),(1.21372,1.03261,1.03261,1.21372,0.96016,1.24383,1.21372,1.21372,1.69639,1.11117,1.69639,1.21372,1.21372,1.24383,1.11117,1.21372,1.03261,1.03261,1.21372,0.96016,1.11117,0.96016,0.96016,1.11117,0.899757),(1.93775,1.39476,1.21365,1.39476,1.32239,1.72661,1.93775,1.45508,1.93775,2.07651,1.45508,1.21365,1.18354,1.21365,1.17139,1.93775,1.39476,1.21365,1.39476,1.32239,2.07651,1.32239,1.17139,1.32239,1.20177),(1.93775,1.72661,1.93775,1.45508,2.07651,1.39476,1.93775,1.39476,1.21365,1.32239,1.39476,1.93775,1.39476,1.21365,1.32239,1.21365,1.45508,1.21365,1.18354,1.17139,1.32239,2.07651,1.32239,1.17139,1.20177),(1.21372,1.24383,1.69639,1.21372,1.11117,1.03261,1.21372,1.21372,1.03261,0.96016,1.03261,1.21372,1.21372,1.03261,0.96016,1.21372,1.69639,1.24383,1.21372,1.11117,0.96016,1.11117,1.11117,0.96016,0.899757),(1.85931,1.64818,1.64818,1.40675,1.65424,1.64818,2.19116,2.19116,1.64818,2.40835,1.64818,2.19116,2.19116,1.64818,2.40835,1.40675,1.64818,1.64818,1.85931,1.65424,1.65424,2.40835,2.40835,1.65424,2.71),(1.18354,1.21365,1.45508,1.21365,1.17139,1.21365,1.39476,1.93775,1.39476,1.32239,1.21365,1.39476,1.93775,1.39476,1.32239,1.45508,1.93775,1.72661,1.93775,2.07651,1.17139,1.32239,2.07651,1.32239,1.20177),(1.21372,1.24383,1.21372,1.69639,1.11117,1.03261,1.21372,1.03261,1.21372,0.96016,1.21372,1.69639,1.21372,1.24383,1.11117,1.03261,1.21372,1.03261,1.21372,0.96016,0.96016,1.11117,0.96016,1.11117,0.899757),(1.93775,1.72661,1.45508,1.93775,2.07651,1.39476,1.93775,1.21365,1.39476,1.32239,1.21365,1.45508,1.18354,1.21365,1.17139,1.39476,1.93775,1.21365,1.39476,1.32239,1.32239,2.07651,1.17139,1.32239,1.20177),(1.18354,1.21365,1.21365,1.45508,1.17139,1.21365,1.39476,1.39476,1.93775,1.32239,1.45508,1.93775,1.93775,1.72661,2.07651,1.21365,1.39476,1.39476,1.93775,1.32239,1.17139,1.32239,1.32239,2.07651,1.20177),(1.85931,1.64818,1.40675,1.64818,1.65424,1.64818,2.19116,1.64818,2.19116,2.40835,1.40675,1.64818,1.85931,1.64818,1.65424,1.64818,2.19116,1.64818,2.19116,2.40835,1.65424,2.40835,1.65424,2.40835,2.71))Simulating policy with nrRuns: 1000 and seed: 42
+...done
+Avg rewards: < 1.68966 >
+
+
+25 colonnes : 25 actions
+16lignes : 16 etats
+ici il nous donne la récompense pour chaque action de chaque etat.
+
+
+4.2 
+
+ici nous devons enlever toutes les lignes stay 
+on ne définit pas d’action « rester
+sur place » et on cherche à éviter les rencontres au lieu de les favoriser.
+et ensuite on change les fonction de recompense.
+
+ancien : recompense quand les deux agents sont sur les même cases
+R: * : * : 0 : * : 1.0
+R: * : * : 5 : * : 1.0
+R: * : * : 10 : * : 1.0
+R: * : * : 15 : * : 1.0
+
+transforme en :
+
+R: * : * : 0 : * : -1.0
+R: * : * : 5 : * : -1.0
+R: * : * : 10 : * : -1.0
+R: * : * : 15 : * : -1.0
+
+resultat : 
+
+3875714@ppti-24-301-09:/usr/local/madp-0.4.1/src/solvers$ time ./MMDP_Solver ~/Documents/Cocoma/modifiedGridSmall.dpomdp -h3 --discount=0.9
+Instantiating the problem...
+...done.
+Running value iteration...
+MMDP_Solver: could not open /users/Etu4/3875714/.madp/results/MMDP_Solver_VI/modifiedGridSmall/MMDP_Solver_VI_modifiedGridSmall_g0.9__h3
+Results will not be stored to disk.
+...done.
+action policy : [16,16]((-0.858129,-0.452085,-0.858129,-0.452085,-0.452085,-0.622491,-0.452085,-0.321621,-0.858129,-0.452085,-0.858129,-0.452085,-0.452085,-0.321621,-0.452085,-0.622491),(-0.274597,-0.199249,-0.680642,-0.274597,-0.199249,-0.149191,-0.329713,-0.199249,-0.274597,-0.199249,-0.680642,-0.274597,-0.680642,-0.329713,-0.510236,-0.680642),(-0.680642,-0.274597,-0.274597,-0.199249,-0.510236,-0.680642,-0.680642,-0.329713,-0.680642,-0.274597,-0.274597,-0.199249,-0.329713,-0.199249,-0.199249,-0.149191),(-0.163249,-0.0879012,-0.163249,-0.0879012,-0.213307,-0.163249,-0.514178,-0.163249,-0.163249,-0.0879012,-0.163249,-0.0879012,-0.514178,-0.163249,-0.213307,-0.163249),(-0.274597,-0.199249,-0.274597,-0.680642,-0.199249,-0.149191,-0.199249,-0.329713,-0.680642,-0.329713,-0.680642,-0.510236,-0.274597,-0.199249,-0.274597,-0.680642),(-0.858129,-0.452085,-0.452085,-0.858129,-0.452085,-0.622491,-0.321621,-0.452085,-0.452085,-0.321621,-0.622491,-0.452085,-0.858129,-0.452085,-0.452085,-0.858129),(-0.163249,-0.0879012,-0.0879012,-0.163249,-0.213307,-0.163249,-0.163249,-0.514178,-0.514178,-0.163249,-0.163249,-0.213307,-0.163249,-0.0879012,-0.0879012,-0.163249),(-0.680642,-0.274597,-0.199249,-0.274597,-0.510236,-0.680642,-0.329713,-0.680642,-0.329713,-0.199249,-0.149191,-0.199249,-0.680642,-0.274597,-0.199249,-0.274597),(-0.680642,-0.510236,-0.680642,-0.329713,-0.274597,-0.680642,-0.274597,-0.199249,-0.274597,-0.680642,-0.274597,-0.199249,-0.199249,-0.329713,-0.199249,-0.149191),(-0.163249,-0.213307,-0.514178,-0.163249,-0.0879012,-0.163249,-0.163249,-0.0879012,-0.0879012,-0.163249,-0.163249,-0.0879012,-0.163249,-0.514178,-0.213307,-0.163249),(-0.622491,-0.452085,-0.452085,-0.321621,-0.452085,-0.858129,-0.858129,-0.452085,-0.452085,-0.858129,-0.858129,-0.452085,-0.321621,-0.452085,-0.452085,-0.622491),(-0.149191,-0.199249,-0.329713,-0.199249,-0.199249,-0.274597,-0.680642,-0.274597,-0.199249,-0.274597,-0.680642,-0.274597,-0.329713,-0.680642,-0.510236,-0.680642),(-0.163249,-0.213307,-0.163249,-0.514178,-0.0879012,-0.163249,-0.0879012,-0.163249,-0.163249,-0.514178,-0.163249,-0.213307,-0.0879012,-0.163249,-0.0879012,-0.163249),(-0.680642,-0.510236,-0.329713,-0.680642,-0.274597,-0.680642,-0.199249,-0.274597,-0.199249,-0.329713,-0.149191,-0.199249,-0.274597,-0.680642,-0.199249,-0.274597),(-0.149191,-0.199249,-0.199249,-0.329713,-0.199249,-0.274597,-0.274597,-0.680642,-0.329713,-0.680642,-0.680642,-0.510236,-0.199249,-0.274597,-0.274597,-0.680642),(-0.622491,-0.452085,-0.321621,-0.452085,-0.452085,-0.858129,-0.452085,-0.858129,-0.321621,-0.452085,-0.622491,-0.452085,-0.452085,-0.858129,-0.452085,-0.858129))Simulating policy with nrRuns: 1000 and seed: 42
+...done
+Avg rewards: < -0.0874073 >
+
+real	0m0.093s
+user	0m0.080s
+sys	0m0.000s
+
+
+faire en python pour extraire le meilleur dans chaque ligne
+
+
+5 
+pour le 5 il faut modifier les ligne d'observation en mettant des proba plus limitée.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
