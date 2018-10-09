@@ -1,0 +1,174 @@
+# ----------------------------- rapport TP DCOP ------------------------------ #
+❯ ./startAdopt adopt maxcsp-tree Problems/Problem-GraphColor-18_3_4_0.4_r23
+----------Algorithm: Adopt ----------
+----------Problem: maxcsp-tree ----------
+Reading input file... 
+  Forming DFS tree... 
+  ...done forming DFS tree.
+...done reading input file. 
+Begin algorithm execution...
+  time elapsed(sec)-------------------------------5.0
+  total msgs communicated-------------------------0 (rcvd=0)
+  time elapsed(sec)-------------------------------10.004
+  total msgs communicated-------------------------18 (rcvd=18)
+  time elapsed(sec)-------------------------------15.004
+  total msgs communicated-------------------------18 (rcvd=18)
+  time elapsed(sec)-------------------------------20.004
+  total msgs communicated-------------------------36 (rcvd=18)
+  time elapsed(sec)-------------------------------25.005
+  total msgs communicated-------------------------36 (rcvd=36)
+  time elapsed(sec)-------------------------------30.005
+  total msgs communicated-------------------------54 (rcvd=36)
+  time elapsed(sec)-------------------------------35.005
+  total msgs communicated-------------------------54 (rcvd=54)
+  time elapsed(sec)-------------------------------40.005
+  total msgs communicated-------------------------72 (rcvd=54)
+  time elapsed(sec)-------------------------------45.005
+  total msgs communicated-------------------------72 (rcvd=72)
+  time elapsed(sec)-------------------------------50.005
+  total msgs communicated-------------------------90 (rcvd=72)
+  time elapsed(sec)-------------------------------55.006
+  total msgs communicated-------------------------90 (rcvd=90)
+  time elapsed(sec)-------------------------------60.006
+  total msgs communicated-------------------------108 (rcvd=90)
+  time elapsed(sec)-------------------------------65.006
+  total msgs communicated-------------------------108 (rcvd=108)
+  time elapsed(sec)-------------------------------70.006
+  total msgs communicated-------------------------126 (rcvd=108)
+  time elapsed(sec)-------------------------------75.006
+  total msgs communicated-------------------------126 (rcvd=126)
+  time elapsed(sec)-------------------------------80.007
+  total msgs communicated-------------------------144 (rcvd=126)
+  time elapsed(sec)-------------------------------85.007
+  total msgs communicated-------------------------144 (rcvd=144)
+  time elapsed(sec)-------------------------------90.007
+  total msgs communicated-------------------------162 (rcvd=144)
+  time elapsed(sec)-------------------------------95.007
+  total msgs communicated-------------------------162 (rcvd=162)
+  time elapsed(sec)-------------------------------100.007
+  total msgs communicated-------------------------180 (rcvd=162)
+  time elapsed(sec)-------------------------------105.007
+  total msgs communicated-------------------------180 (rcvd=180)
+  time elapsed(sec)-------------------------------110.007
+  total msgs communicated-------------------------198 (rcvd=180)
+  time elapsed(sec)-------------------------------115.008
+  total msgs communicated-------------------------198 (rcvd=198)
+  time elapsed(sec)-------------------------------120.008
+  total msgs communicated-------------------------216 (rcvd=198)
+  time elapsed(sec)-------------------------------125.008
+  total msgs communicated-------------------------216 (rcvd=216)
+  time elapsed(sec)-------------------------------130.008
+  total msgs communicated-------------------------234 (rcvd=216)
+  time elapsed(sec)-------------------------------135.008
+  total msgs communicated-------------------------234 (rcvd=234)
+  time elapsed(sec)-------------------------------140.009
+  total msgs communicated-------------------------252 (rcvd=234)
+  time elapsed(sec)-------------------------------145.009
+  total msgs communicated-------------------------252 (rcvd=252)
+  time elapsed(sec)-------------------------------150.009
+  total msgs communicated-------------------------270 (rcvd=252)
+  time elapsed(sec)-------------------------------155.009
+  total msgs communicated-------------------------270 (rcvd=270)
+  time elapsed(sec)-------------------------------160.009
+  total msgs communicated-------------------------288 (rcvd=270)
+  time elapsed(sec)-------------------------------165.009
+  total msgs communicated-------------------------288 (rcvd=288)
+  time elapsed(sec)-------------------------------170.01
+  total msgs communicated-------------------------306 (rcvd=288)
+  time elapsed(sec)-------------------------------175.01
+  total msgs communicated-------------------------306 (rcvd=306)
+  time elapsed(sec)-------------------------------180.01
+  total msgs communicated-------------------------324 (rcvd=306)
+  time elapsed(sec)-------------------------------185.01
+  total msgs communicated-------------------------324 (rcvd=324)
+  time elapsed(sec)-------------------------------190.01
+  total msgs communicated-------------------------342 (rcvd=324)
+  time elapsed(sec)-------------------------------195.01
+  total msgs communicated-------------------------342 (rcvd=342)
+  time elapsed(sec)-------------------------------200.01
+  total msgs communicated-------------------------360 (rcvd=342)
+  time elapsed(sec)-------------------------------205.011
+  total msgs communicated-------------------------360 (rcvd=360)
+  time elapsed(sec)-------------------------------210.011
+  total msgs communicated-------------------------378 (rcvd=360)
+  time elapsed(sec)-------------------------------215.011
+  total msgs communicated-------------------------378 (rcvd=378)
+  time elapsed(sec)-------------------------------220.011
+  total msgs communicated-------------------------396 (rcvd=378)
+  time elapsed(sec)-------------------------------225.011
+  total msgs communicated-------------------------396 (rcvd=396)
+  time elapsed(sec)-------------------------------230.011
+  total msgs communicated-------------------------414 (rcvd=396)
+  time elapsed(sec)-------------------------------235.012
+  total msgs communicated-------------------------414 (rcvd=414)
+  time elapsed(sec)-------------------------------240.012
+  total msgs communicated-------------------------432 (rcvd=414)
+  time elapsed(sec)-------------------------------245.012
+  total msgs communicated-------------------------432 (rcvd=432)
+  time elapsed(sec)-------------------------------250.012
+  total msgs communicated-------------------------450 (rcvd=432)
+  time elapsed(sec)-------------------------------255.012
+  total msgs communicated-------------------------450 (rcvd=450)
+  time elapsed(sec)-------------------------------260.012
+  total msgs communicated-------------------------468 (rcvd=450)
+  time elapsed(sec)-------------------------------265.013
+  total msgs communicated-------------------------468 (rcvd=468)
+  time elapsed(sec)-------------------------------270.013
+  total msgs communicated-------------------------486 (rcvd=468)
+  time elapsed(sec)-------------------------------275.013
+  total msgs communicated-------------------------486 (rcvd=486)
+  time elapsed(sec)-------------------------------280.013
+  total msgs communicated-------------------------504 (rcvd=486)
+    agent1-var15 is done...1
+    agent1-var0 is done...2
+    agent1-var4 is done...2
+    agent1-var5 is done...1
+    agent1-var14 is done...0
+  time elapsed(sec)-------------------------------285.013
+  total msgs communicated-------------------------504 (rcvd=504)
+    agent1-var2 is done...2
+    agent1-var11 is done...0
+    agent1-var17 is done...2
+    agent1-var16 is done...0
+    agent1-var9 is done...0
+    agent1-var10 is done...1
+    agent1-var6 is done...0
+    agent1-var8 is done...2
+    agent1-var13 is done...2
+    agent1-var1 is done...1
+    agent1-var12 is done...1
+    agent1-var7 is done...1
+    agent1-var3 is done...2
+       agent1's  cycle cnt: 53501
+  All agents terminated---------------------------290.014
+  Total msgs sent--------------------------------- 0
+Simulator waiting for Master to finish
+Done. 
+
+
+
+Solution
+--------------------
+agent1-var0 =  2
+agent1-var1 =  1
+agent1-var2 =  2
+agent1-var3 =  2
+agent1-var4 =  2
+agent1-var5 =  1
+agent1-var6 =  0
+agent1-var7 =  1
+agent1-var8 =  2
+agent1-var9 =  0
+agent1-var10 =  1
+agent1-var11 =  0
+agent1-var12 =  1
+agent1-var13 =  2
+agent1-var14 =  0
+agent1-var15 =  1
+agent1-var16 =  0
+agent1-var17 =  2
+               quality: 8
+               broken constraints: (agent1-var0, agent1-var4)(agent1-var0, agent1-var17)(agent1-var1, agent1-var7)(agent1-var4, agent1-var2)(agent1-var4, agent1-var17)(agent1-var15, agent1-var5)(agent1-var16, agent1-var6)(agent1-var16, agent1-var9)
+********* TotalTime (secs) 286.176 (pollTime 5) *********
+********* Thanks for playing ************
+
