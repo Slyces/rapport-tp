@@ -1,0 +1,29 @@
+2.4
+
+>./startAdopt adopt maxcsp-tree Problems/Problem-GraphColor-18_3_4_0.4_r23
+
+Solution
+--------------------
+agent1-var0 =  2
+agent1-var1 =  1
+agent1-var2 =  2
+agent1-var3 =  2
+agent1-var4 =  2
+agent1-var5 =  1
+agent1-var6 =  0
+agent1-var7 =  1
+agent1-var8 =  2
+agent1-var9 =  0
+agent1-var10 =  1
+agent1-var11 =  0
+agent1-var12 =  1
+agent1-var13 =  2
+agent1-var14 =  0
+agent1-var15 =  1
+agent1-var16 =  0
+agent1-var17 =  2
+               quality: 8
+               broken constraints: (agent1-var0, agent1-var4)(agent1-var0, agent1-var17)(agent1-var1, agent1-var7)(agent1-var4, agent1-var2)(agent1-var4, agent1-var17)(agent1-var15, agent1-var5)(agent1-var16, agent1-var6)(agent1-var16, agent1-var9)
+********* TotalTime (secs) 290.477 (pollTime 5) *********
+********* Thanks for playing ************
+
