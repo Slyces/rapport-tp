@@ -1,0 +1,242 @@
+2.4
+
+>./startAdopt adopt maxcsp-tree Problems/Problem-GraphColor-18_3_4_0.4_r23
+
+Solution
+--------------------
+agent1-var0 =  2
+agent1-var1 =  1
+agent1-var2 =  2
+agent1-var3 =  2
+agent1-var4 =  2
+agent1-var5 =  1
+agent1-var6 =  0
+agent1-var7 =  1
+agent1-var8 =  2
+agent1-var9 =  0
+agent1-var10 =  1
+agent1-var11 =  0
+agent1-var12 =  1
+agent1-var13 =  2
+agent1-var14 =  0
+agent1-var15 =  1
+agent1-var16 =  0
+agent1-var17 =  2
+               quality: 8
+               broken constraints: (agent1-var0, agent1-var4)(agent1-var0, agent1-var17)(agent1-var1, agent1-var7)(agent1-var4, agent1-var2)(agent1-var4, agent1-var17)(agent1-var15, agent1-var5)(agent1-var16, agent1-var6)(agent1-var16, agent1-var9)
+********* TotalTime (secs) 290.477 (pollTime 5) *********
+********* Thanks for playing ************
+
+
+2.5
+
+AGENT 1
+AGENT 2
+AGENT 3
+AGENT 4
+VARIABLE 0 1 2
+VARIABLE 1 2 2
+VARIABLE 2 3 2
+VARIABLE 3 4 2
+CONSTRAINT 0 2
+F 0 0 1
+F 0 1 2
+F 1 0 2
+F 1 1 0
+CONSTRAINT 0 1
+F 0 0 1
+F 0 1 2
+F 1 0 2
+F 1 1 0
+CONSTRAINT 1 2
+F 0 0 1
+F 0 1 2
+F 1 0 2
+F 1 1 0
+CONSTRAINT 1 3
+F 0 0 1
+F 0 1 2
+F 1 0 2
+F 1 1 0
+
+
+All agents terminated---------------------------5.001
+  Total msgs sent--------------------------------- 33
+Simulator waiting for Master to finish
+Done. 
+
+
+
+Solution
+--------------------
+agent1-var0 =  1
+agent2-var1 =  1
+agent3-var2 =  1
+agent4-var3 =  1
+               quality: 0
+
+
+3.1 
+
+agent = pompier
+domaine de def -> numéro du bat
+
+donc pour chaque agent, on donne une variable qui peut prendre entre 0 et 3 (le numéro du batiment)
+Il y a donc 3 agents et 3 variables.
+
+on veut donc d'apres la fonction, c'est mieux si ils sont plusieurs sur un meme batiment.
+
+AGENT 1
+AGENT 2
+AGENT 3
+VARIABLE 0 1 4
+VARIABLE 1 2 4
+VARIABLE 2 3 4
+CONSTRAINT 0 1
+F 1 1 0
+F 0 1 5
+F 0 2 5
+F 1 2 5
+F 0 0 50
+F 0 3 50
+F 1 0 50
+F 1 3 50
+F 2 0 50
+F 2 1 50
+F 2 2 50
+F 2 3 50
+F 3 0 50
+F 3 1 50
+F 3 2 50
+F 3 3 50
+CONSTRAINT 1 2 
+F 2 2 0
+F 2 3 5
+F 1 3 5
+F 1 2 5
+F 0 0 50
+F 0 1 50
+F 0 2 50
+F 0 3 50
+F 1 0 50
+F 1 1 50
+F 2 0 50
+F 2 1 50
+F 3 0 50
+F 3 1 50
+F 3 2 50
+F 3 3 50
+CONSTRAINT 0 2
+F 0 0 50
+F 0 1 50
+F 0 2 0
+F 0 3 0
+F 1 0 50
+F 1 1 50
+F 1 2 0
+F 1 3 0
+F 2 0 50
+F 2 1 50
+F 2 2 50
+F 2 3 50
+F 3 0 50
+F 3 1 50
+F 3 2 50
+F 3 3 50
+
+
+
+  All agents terminated---------------------------5.001
+  Total msgs sent--------------------------------- 27
+Simulator waiting for Master to finish
+Done. 
+
+
+
+Solution
+--------------------
+agent1-var0 =  1
+agent2-var1 =  1
+agent3-var2 =  2
+               quality: 5
+               broken constraints: (agent2-var1, agent3-var2)
+
+
+optimal différent :
+
+AGENT 1
+AGENT 2
+AGENT 3
+VARIABLE 0 1 4
+VARIABLE 1 2 4
+VARIABLE 2 3 4
+CONSTRAINT 0 1
+F 1 1 1
+F 0 1 5
+F 0 2 5
+F 1 2 5
+F 0 0 50
+F 0 3 50
+F 1 0 50
+F 1 3 50
+F 2 0 50
+F 2 1 50
+F 2 2 50
+F 2 3 50
+F 3 0 50
+F 3 1 50
+F 3 2 50
+F 3 3 50
+CONSTRAINT 1 2 
+F 2 2 0
+F 2 3 5
+F 1 3 5
+F 1 2 5
+F 0 0 50
+F 0 1 50
+F 0 2 50
+F 0 3 50
+F 1 0 50
+F 1 1 50
+F 2 0 50
+F 2 1 50
+F 3 0 50
+F 3 1 50
+F 3 2 50
+F 3 3 50
+CONSTRAINT 0 2
+F 0 0 50
+F 0 1 50
+F 0 2 0
+F 0 3 0
+F 1 0 50
+F 1 1 50
+F 1 2 0
+F 1 3 0
+F 2 0 50
+F 2 1 50
+F 2 2 50
+F 2 3 50
+F 3 0 50
+F 3 1 50
+F 3 2 50
+F 3 3 50
+
+
+All agents terminated---------------------------5.001
+  Total msgs sent--------------------------------- 47
+Simulator waiting for Master to finish
+Done. 
+
+
+
+Solution
+--------------------
+agent1-var0 =  0
+agent2-var1 =  2
+agent3-var2 =  2
+               quality: 5
+               broken constraints: (agent1-var0, agent2-var1)
+
+
+
