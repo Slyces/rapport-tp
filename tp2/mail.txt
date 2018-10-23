@@ -1,0 +1,106 @@
+Bonjour,
+Nous avons quelques soucis avec l'algorithme d'adopt. Il ne semble pas trouver d'optimum. Pour le vérifier, nous avons testé les configurations suivantes :
+        
+Configuration 1
+---------------
+
+    a_i \in {0, 1, 2, 3}, c'est à dire chaque agent choisit un batiment parmi
+                          les 4.
+    Dans la fonction de coût, on établit un coût fort (100) pour les choix
+    de batiments interdits, un coût moyen (5) lorsqu'on est seul sur un batiment
+    valide, et un coût faible (0) lorsqu'on est deux sur un batiment valide.
+
+    La sortie de l'algorithme est la suivante :
+    '''
+    Solution
+    --------------------
+    agent1-var0 =  0
+    agent2-var1 =  1
+    agent3-var2 =  2
+                   quality: 10
+    '''
+
+    C'est à dire :
+
+    ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
+    │    a1    │  │    a2    │  │    a3    │  │          │
+    └──────────┘  └──────────┘  └──────────┘  └──────────┘
+
+Configuration 2
+---------------
+
+    a_i \in {0, 1} où 0 = gauche, 1 = droite
+    On considère les agents deux à deux, la fonction de cout est alors
+    (gauche gauche) 5
+    (gauche droite) 5
+    (droite gauche) 0 # ils sont au même endroit
+    (droite droite) 5
+
+    La solution obtenue est :
+    '''
+    solution
+    --------------------
+    agent1-var0 =  0
+    agent2-var1 =  1
+    agent3-var2 =  0
+               quality: 5
+    '''
+
+    Soit :
+
+    ┌────────┐  ┌────────┐  ┌────────┐  ┌────────┐
+    │   a1   │  │        │  │ a2+a3  │  │        │
+    └────────┘  └────────┘  └────────┘  └────────┘
+    
+    Ici, c'est optimisé.
+
+Configuration 3
+---------------
+
+    C'est la même, mais cette fois ci on met une petite pénalité (2) lorsque
+    a2 et a3 sont ensemble, pour forcer l'optimum sur a1 et a2.
+    On s'attend a obtenir un cout de 5 et la solution :
+
+    ┌────────┐  ┌────────┐  ┌────────┐  ┌────────┐
+    │        │  │ a1+a2  │  │   a3   │  │        │ (la place d'a3 n'est)
+    └────────┘  └────────┘  └────────┘  └────────┘ (   pas importante  )
+
+    Mais on obtient :
+    
+    '''
+    Solution
+    --------------------
+    agent1-var0 =  0
+    agent2-var1 =  1
+    agent3-var2 =  0
+                   quality: 7
+    '''
+
+    Il a gardé la même solution qu'avant ! Il ne trouve donc pas l'optimum.
+
+
+Je vous met en pièce jointe les 3 configurations.
+
+La question est : le problème vient-il de adopt, ou de nous ?
+
+--------------------------------------------------------------------------
+
+Nous avons réussi à modifier les classes Java pour fixer ces problèmes.
+Les fichiers les plus récents nétaient pas utilisés. On n'a aucune garantie
+que ces modifications soient correctes, mais elles donnent les bon résultats
+sur ces exemples de test.
+
+En cc : Maxime Desbois qui a fait les modifications Java.
+
+Procédure pour reproduire notre version modifiée :
+    - remplacer adopt/solver/Adopt.java par celui en pièce jointe
+    - remplacer adopt/solver/Intradopt.java par celui en pièce jointe
+    - supprimer adopt/solver/Adoptver1.java
+
+On conseille bien sûr de faire ça dans une copie du projet.
+
+P.S : si le fix est bon, on se contentera de 2 points en plus =D
+
+Cordialement,
+Simon Lassourreuille et Maxime Desbois
+

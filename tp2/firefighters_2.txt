@@ -1,0 +1,23 @@
+# 3 pompiers
+AGENT 1
+AGENT 2
+AGENT 3
+
+# 4 batiments
+VARIABLE 0 1 2
+VARIABLE 1 2 2 
+VARIABLE 2 3 2 
+
+# contrainte agent 0 & agent 1
+CONSTRAINT 0 1
+F 0 0 5
+F 0 1 5
+F 1 0 0
+F 1 1 5
+
+# contrainte agent 1 et agent 2
+CONSTRAINT 1 2
+F 0 0 5
+F 0 1 5
+F 1 0 0
+F 1 1 5

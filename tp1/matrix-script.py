@@ -36,12 +36,12 @@ for i, line in enumerate(matrix_string.split('),(')):
 # ---------------------------------------------------------------------------- #
 # On affiche la matrice avec un format plus agréable
 
-def color(x):
+def color(x): # petit code pour colorer le résultat dans le terminal
     c = "\033[94m" # color
     e = "\033[0m" # endline
     return c + x + e
 
-actions = ("↑","↓","←","→","•")[:nb_a]
+actions = ("↑","↓","←","→","•")[:nb_a] # on garde les 'nb_a' premières
 
 states = []
 for i in range(nb_s):
@@ -54,16 +54,18 @@ for i in range(nb_s):
             s[i] = "◉"
         states.append('(' + ''.join(s) + ')')
 
-actions_list = [' ' * 6] + ["(" + actions[i] + " " + actions[j] + ")" for i in range(nb_a)
-                                                    for j in range(nb_a)]
+actions_list = [' ' * 6] + ["(" + actions[i] + " " + actions[j] + ")"
+        for i in range(nb_a) for j in range(nb_a)]
 
 formated_str = [[' ' for j in range(nb_actions + 1)] for i in range(nb_states + 1)]
 formated_str[0] = [action for action in actions_list]
 for i in range(nb_states):
     formated_str[i + 1][0] = states[i]
     for j in range(nb_actions):
-        val = '{:5.3}'.format(matrix[i][j])
+        val = '{:5.2}'.format(matrix[i][j])
         formated_str[i + 1][j + 1] = color(val) if matrix[i][j] == max(matrix[i]) else val
+        print(len(formated_str[i+1][j+1]), formated_str[i + 1][j + 1])
+
 print('\n'.join([' '.join(line) for line in formated_str]))
 print()
 
@@ -76,18 +78,12 @@ latex_states = [''.join([x if x != '_' else '\\_' for x in s]) for s in states]
 formated_str = [[' ' for j in range(nb_actions + 1)] for i in range(nb_states + 1)]
 formated_str[0] = [action for action in actions_list]
 for i in range(nb_states):
-    formated_str[i + 1][0] = latex_states[i]
+    formated_str[i + 1][0] = latex_states[i] + ' '
     for j in range(nb_actions):
-        val = '{:5.3}'.format(matrix[i][j])
+        val = '{:5.2}'.format(matrix[i][j])
         formated_str[i + 1][j + 1] = latexcolor(val) if matrix[i][j] == max(matrix[i]) else val
 print('\\\\ \n'.join([' & '.join(line[:6] + line[-5:]) for line in formated_str]))
-print()
-# print(' ' + ' & '.join(actions_list) + '\\\\')
-# print('\n'.join([latex_states[i] + ' & ' + ' & '.join([(latexcolor('{:10.3}')
-    # if x == max(matrix[i]) else '{:10.3}').format(x)
-    # for x in line]) + "\\\\" for (i, line) in enumerate(matrix)]))
-
-# print()
+print() # saut de ligne
 
 # ---------------------------------------------------------------------------- #
 # On récupère les différents max
@@ -95,9 +91,9 @@ for state in range(nb_states):
     line = matrix[state]
     local_max = max(line)
     actions_index = tuple([i for (i,x) in enumerate(line) if x == local_max])
-    # actions_str = ' ; '.join(['{} {}'.format(x, actions_list[1:][x]) for x in actions_index])
     actions_str = ';'.join(['{}'.format(actions_list[1:][x]) for x in actions_index])
-    print("{s:2} --> {a} [{v}]".format(
+    # on les affiche avec un format particulier
+    print("{s:2} [{v}] --> {a}".format(
             s = states[state], a = actions_str, v=local_max
         ))
 
