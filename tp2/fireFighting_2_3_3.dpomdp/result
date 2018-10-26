@@ -1,0 +1,58 @@
+h1 AM
+
+value=-2.48148
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 5
+Policy for agent 0 (index 1):
+() --> go2
+Policy for agent 1 (index 2):
+() --> go3
+OptimalValueDatabase: entry 'data 1 1'
+OptimalValueDatabase: Optimal value unknown.
+Running Simulation to determine control quality...
+Sampled value = -2.47464 (computed was -2.48148)
+
+
+H2 AM
+value=-4.3835
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 353
+Policy for agent 0 (index 13):
+() --> go2
+(flames) --> go2
+(noFlames) --> go2
+Policy for agent 1 (index 2):
+() --> go1
+(flames) --> go1
+(noFlames) --> go3
+OptimalValueDatabase: entry 'data 1 2'
+OptimalValueDatabase: Optimal value unknown.
+Running Simulation to determine control quality...
+Sampled value = -4.37216 (computed was -4.3835)
+
+
+H3 AM
+value=-5.73697
+JointPolicyPureVector: 
+JPolComponent_VectorImplementation index 2478109
+Policy for agent 0 (index 1133):
+() --> go2
+(flames) --> go2
+(noFlames) --> go2
+(flames,flames) --> go3
+(flames,noFlames) --> go3
+(noFlames,flames) --> go3
+(noFlames,noFlames) --> go3
+Policy for agent 1 (index 238):
+() --> go1
+(flames) --> go1
+(noFlames) --> go3
+(flames,flames) --> go3
+(flames,noFlames) --> go3
+(noFlames,flames) --> go2
+(noFlames,noFlames) --> go2
+OptimalValueDatabase: entry 'data 1 3'
+OptimalValueDatabase: Optimal value unknown.
+Running Simulation to determine control quality...
+Sampled value = -5.74462 (computed was -5.73697)
+

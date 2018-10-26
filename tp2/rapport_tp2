@@ -239,4 +239,35 @@ agent3-var2 =  2
                broken constraints: (agent1-var0, agent2-var1)
 
 
+dernier exo
+
+AGENT 1
+AGENT 2
+VARIABLE 0 1 3
+VARIABLE 1 2 3
+CONSTRAINT 0 1
+F 1 1 0
+F 0 1 5
+F 0 2 5
+F 1 2 5
+F 0 0 50
+F 1 0 50
+F 2 0 50
+F 2 1 50
+F 2 2 50
+
+resultat : 
+
+ All agents terminated---------------------------5.001
+  Total msgs sent--------------------------------- 7
+Simulator waiting for Master to finish
+Done. 
+
+Solution
+--------------------
+agent1-var0 =  1
+agent2-var1 =  1
+               quality: 0
+               broken constraints: 
+
 
