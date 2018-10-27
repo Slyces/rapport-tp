@@ -2,10 +2,12 @@ breed [providers provider]
 breed [consumers consumer]
 
 consumers-own [ratingData]
+providers-own [mean_provider type_provider]
 patches-own [idProvider]
 
+
 globals [
-  idTrans
+  idTransaction
   service
 ]
 
@@ -14,6 +16,7 @@ globals [
 to setup
   clear-all
   set service "quality"
+  let listType ["good" "ordinary" "bad" "intermittent"]
 
   create-consumers nbConsumer [
     setxy random-xcor random-ycor
@@ -21,48 +24,123 @@ to setup
     set ratingData []
   ]
 
-
   create-providers nbProvider[
     setxy random-xcor random-ycor
     set color blue
+
+    ;donne la moyenne du provider
+    giveMean
+    ;donne l'id du provider au patch
     ask patches in-radius 6 [
       set pcolor green
-      ;donne l'id du provider au patch
       set idProvider [who] of myself
     ]
   ]
-  set idTrans (nbProvider + nbConsumer + 1)
 
+  set idTransaction (nbProvider + nbConsumer + 1)
 end
 
 to go
   ask consumers-on patches with [pcolor = green][
     ;donne la liste des transaction déja effectué avec ce provider
     ;ne pas oublier de faire le code pour le cas ou plusieur provider pour le patch
-    let listTransaction getListTransaction [idProvider] of patch-here service
+    let list_transaction getListTransaction [idProvider] of patch-here
+
+    ;si liste vide
+    if length list_transaction = 0 [
+      makeTransaction [idProvider] of patch-here
+    ]
     show ratingData
+    ;choix provider
+
   ]
 
 
 end
 
-to-report getListTransaction [idP serv]
+
+to giveMean
+  let pl_perfect 10
+  let pl_good 5
+  let pl_ok 0
+  let pl_bad -5
+  let pl_worst -10
+
+  let listType ["good" "ordinary" "bad" "intermittent"]
+  set type_provider one-of listType
+
+  ifelse type_provider = "good" [
+    set mean_provider mean (list pl_perfect pl_good)
+  ][
+    ifelse type_provider = "ordinary" [
+      set mean_provider mean (list pl_ok pl_good)
+    ][
+      ifelse type_provider = "bad" [
+        set mean_provider pl_bad
+      ][
+        set mean_provider pl_ok
+  ]]]
+end
+
+
+to-report getListTransaction [id_provider]
   let listTransaction []
   ;pour chaque transaction de l'agent
   foreach ratingData [
     transaction ->
     ;si le provider est le même que celui actuellement
-    if item 1 transaction = idP and item 2 transaction = service[
+    if item 1 transaction = id_provider and item 2 transaction = service[
       ;on ajoute la transaction dans la liste
       set listTransaction lput transaction listTransaction
     ]
   ]
-  ifelse length listTransaction != 0 [
-   report listTransaction
-  ] [
-    ;fonction pour faire transaction
-  ]
+  report listTransaction
 end
+
+
+to makeTransaction [id_provider]
+
+  let utility giveUtility id_provider
+  let transaction (list idTransaction id_provider service utility)
+
+  ;ajoute la transaction au consumer
+  set ratingData lput transaction ratingData
+end
+
+to-report giveUtility [id_provider]
+  let utility 0
+  let distance_P 0
+  let mean_P 0
+  let type_P 0
+  ;distance entre le consumer et le provider
+  ask providers with [who = id_provider][
+    set distance_P distance myself
+    set mean_P mean_provider
+    set type_P type_provider
+  ]
+  ; voir comment faire la fonction linéaire pour la distance
+
+  ifelse type_P = "good" [
+    set utility random-normal mean_P 1.0
+  ][
+    ifelse type_P = "ordinary" [
+      set utility random-normal mean_P 2.0
+    ][
+      ifelse type_P = "bad" [
+        set utility random-normal mean_P 2.0
+      ][
+        ;random entre -5 et 5
+        set utility (random-float 10) - 5
+  ]]]
+
+  report utility
+end
+
+
+
+
+
+
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
@@ -497,7 +575,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.0.4
+NetLogo 6.0.2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
