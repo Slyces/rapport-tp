@@ -1,27 +1,37 @@
 breed [providers provider]
 breed [consumers consumer]
 
-consumers-own [ratingData]
+consumers-own [
+  ratingData   ;liste des transactions que le consumer a effectué
+  utility
+]
 providers-own [mean_provider type_provider]
-patches-own [idProvider]
+patches-own [
+  listProvider   ;liste des providers sur le patch
+]
 
 
 globals [
   idTransaction
   service
+  utility-IT
 ]
 
 
 
 to setup
   clear-all
+  reset-ticks
   set service "quality"
-  let listType ["good" "ordinary" "bad" "intermittent"]
 
   create-consumers nbConsumer [
     setxy random-xcor random-ycor
     set color red
     set ratingData []
+  ]
+
+  ask patches [
+    set listProvider []
   ]
 
   create-providers nbProvider[
@@ -31,9 +41,9 @@ to setup
     ;donne la moyenne du provider
     giveMean
     ;donne l'id du provider au patch
-    ask patches in-radius 6 [
-      set pcolor green
-      set idProvider [who] of myself
+    ask patches in-radius range_provider [
+      set listProvider lput [who] of myself listProvider
+      set pcolor scale-color green (length listProvider) 0 10
     ]
   ]
 
@@ -41,21 +51,77 @@ to setup
 end
 
 to go
-  ask consumers-on patches with [pcolor = green][
-    ;donne la liste des transaction déja effectué avec ce provider
-    ;ne pas oublier de faire le code pour le cas ou plusieur provider pour le patch
-    let list_transaction getListTransaction [idProvider] of patch-here
+  ask consumers-on patches with [length listProvider != 0][
+    let idProvider [one-of listProvider] of patch-here
 
-    ;si liste vide
-    if length list_transaction = 0 [
-      makeTransaction [idProvider] of patch-here
+    ;si plusieur provider son dispo
+    if length [listProvider] of patch-here != 1 [
+      set idProvider selectProvider
     ]
-    show ratingData
-    ;choix provider
+    makeTransaction idProvider
+  ]
+  set utility-IT mean [utility] of consumers-on patches with [length listProvider != 0]
 
+  ;tue des agents
+  ask n-of round (nbProvider / 50) consumers [
+    die
   ]
 
+  ;créer des agents
+  create-consumers round (nbProvider / 50) [
+    setxy random-xcor random-ycor
+    set color red
+    set ratingData []
+  ]
+  tick
+end
 
+
+
+
+
+;selectionne le provider
+to-report selectProvider
+  let trustValues []
+
+  ;pour chaque provider du patch
+  foreach [listProvider] of patch-here [
+    idProvider ->
+    let list_transaction getListTransaction idProvider
+    set trustValues lput (list (trustFunction list_transaction) idProvider) trustValues
+  ]
+
+  ;prend le plus haut taux de trustValues et report l'id du provider
+  set trustValues sort-by [ [a b] -> item 0 a >= item 0 b] trustValues
+  let selected item 1 item 0 trustValues
+  report selected
+
+end
+
+to-report trustFunction [list_transaction]
+  let up 0
+  let down 0
+  let wieght 0
+
+  ifelse length list_transaction = 0 [
+    report 0
+  ][
+    foreach list_transaction [
+      transaction ->
+      set wieght giveWieght-IT transaction
+      set up (up + wieght * item 3 transaction)
+      set down (down + wieght)
+    ]
+
+    report up / down
+  ]
+end
+
+to-report giveWieght-IT [transaction]
+  let time ticks - item 4 transaction
+  let lambda (- (5 / ln 0.5))
+
+  report exp ( - (time / lambda))
 end
 
 
@@ -100,25 +166,32 @@ end
 
 to makeTransaction [id_provider]
 
-  let utility giveUtility id_provider
-  let transaction (list idTransaction id_provider service utility)
+  giveUtility id_provider
+
+  ;normalize l'utilité
+  let note utility / 10
+
+  let transaction (list idTransaction id_provider service note ticks)
+  set idTransaction idTransaction + 1
 
   ;ajoute la transaction au consumer
   set ratingData lput transaction ratingData
 end
 
-to-report giveUtility [id_provider]
-  let utility 0
+to giveUtility [id_provider]
   let distance_P 0
   let mean_P 0
   let type_P 0
+
   ;distance entre le consumer et le provider
   ask providers with [who = id_provider][
     set distance_P distance myself
     set mean_P mean_provider
     set type_P type_provider
   ]
+  ;--------------------------------------------------------
   ; voir comment faire la fonction linéaire pour la distance
+  ;---------------------------------------------------------
 
   ifelse type_P = "good" [
     set utility random-normal mean_P 1.0
@@ -132,10 +205,7 @@ to-report giveUtility [id_provider]
         ;random entre -5 et 5
         set utility (random-float 10) - 5
   ]]]
-
-  report utility
 end
-
 
 
 
@@ -170,10 +240,10 @@ ticks
 30.0
 
 BUTTON
-103
-53
-176
-86
+31
+47
+104
+80
 NIL
 setup
 NIL
@@ -187,13 +257,13 @@ NIL
 1
 
 BUTTON
-95
-101
-158
-134
+30
+91
+93
+124
 NIL
 go
-NIL
+T
 1
 T
 OBSERVER
@@ -211,8 +281,8 @@ SLIDER
 nbConsumer
 nbConsumer
 0
-100
-10.0
+500
+201.0
 1
 1
 NIL
@@ -227,11 +297,44 @@ nbProvider
 nbProvider
 0
 100
-2.0
+49.0
 1
 1
 NIL
 HORIZONTAL
+
+SLIDER
+16
+302
+188
+335
+range_provider
+range_provider
+1
+20
+9.0
+1
+1
+NIL
+HORIZONTAL
+
+PLOT
+810
+33
+1356
+317
+plot 1
+ticks
+utility-IT
+0.0
+500.0
+-10.0
+10.0
+true
+false
+"" ""
+PENS
+"default" 1.0 0 -16777216 true "" "plot utility-IT"
 
 @#$#@#$#@
 ## WHAT IS IT?
